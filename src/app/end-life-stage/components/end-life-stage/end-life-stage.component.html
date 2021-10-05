@@ -7,22 +7,26 @@
   <nav class="nav-steps">
     <div class="mdl-stepper-horizontal-alternative">
       <div class="mdl-stepper-step step-one-selected">
-        <div class="mdl-stepper-circle"></div>
+        <div class="mdl-stepper-circle" (click)="goToMaterialStage()"></div>
+        <div class="mdl-stepper-tag"> Producción </div>
         <div class="mdl-stepper-bar-left"></div>
         <div class="mdl-stepper-bar-right"></div>
       </div>
       <div class="mdl-stepper-step step-two">
-        <div class="mdl-stepper-circle"></div>
+        <div class="mdl-stepper-circle" (click)="goToConstructionStage()"></div>
+        <div class="mdl-stepper-tag"> Construcción </div>
         <div class="mdl-stepper-bar-left"></div>
         <div class="mdl-stepper-bar-right"></div>
       </div>
       <div class="mdl-stepper-step step-three">
-        <div class="mdl-stepper-circle"></div>
+        <div class="mdl-stepper-circle" (click)="goToUsageStage()"></div>
+        <div class="mdl-stepper-tag"> Uso </div>
         <div class="mdl-stepper-bar-left"></div>
         <div class="mdl-stepper-bar-right"></div>
       </div>
       <div class="mdl-stepper-step step-four">
-        <div class="mdl-stepper-circle"></div>
+        <div class="mdl-stepper-circle" (click)="goToEndLife()"></div>
+        <div class="mdl-stepper-tag aux-yellow"> Fin de vida </div>
         <div class="mdl-stepper-bar-left"></div>
         <div class="mdl-stepper-bar-right"></div>
       </div>
@@ -32,6 +36,20 @@
   <section class="container-actions">
     <!--Section sheets-->
     <section class="container-sheets">
+      <div class="container-image" [ngSwitch]="selectedSheet">
+        <img *ngSwitchCase="'Cimentación'" src="../../../../assets/map/2.jpg" class="image-element" alt="" />
+        <img *ngSwitchCase="'Muros interiores'" src="../../../../assets/map/8.jpg" class="image-element" alt="" />
+        <img *ngSwitchCase="'Muros exteriores'" src="../../../../assets/map/9.jpg" class="image-element" alt="" />
+        <img *ngSwitchCase="'Pisos'" src="../../../../assets/map/7.jpg" class="image-element" alt="" />
+        <img *ngSwitchCase="'Techos'" src="../../../../assets/map/5.jpg" class="image-element" alt="" />
+        <img *ngSwitchCase="'Entrepiso'" src="../../../../assets/map/7.jpg" class="image-element" alt="" />
+        <img *ngSwitchCase="'Estructura'" src="../../../../assets/map/11.jpg" class="image-element" alt="" />
+        <img *ngSwitchCase="'Puertas'" src="../../../../assets/map/6.jpg" class="image-element" alt="" />
+        <img *ngSwitchCase="'Ventanas'" src="../../../../assets/map/4.jpg" class="image-element" alt="" />
+        <img *ngSwitchCase="'Inst. especiales'" src="../../../../assets/map/13.jpg" class="image-element" alt="" />
+        <img *ngSwitchCase="'Otros'" src="../../../../assets/map/14.jpg" class="image-element" alt="" />
+        <img *ngSwitchDefault src="../../../../assets/map/12.jpg" class="image-element" alt="" />
+      </div>
       <div class="list-elements">
         <mat-selection-list
           #sheets
@@ -49,9 +67,9 @@
       </div>
     </section>
     <!--Formulario de energía consumida-->
-    <section class="container-systems">
+    <section class="container-systems" *ngIf="indexSheet!==undefined">
       <h3>1. Energía consumida durante el proceso deconstructivo</h3>
-      <div class="container-ec" *ngIf="indexSheet!==undefined">
+      <div class="container-ec">
         <div *ngFor="let data of dataArrayEC; let i=index;">
           <div class="Row top-0">
             <div class="Col col-small-space">
@@ -76,7 +94,7 @@
                   class="input-general"
                   [(ngModel)]="data.cantidad"
                   name="cantidad_{{i}}"
-                  matInput 
+                  matInput
                   type="number"
                 >
               </mat-form-field>
@@ -115,15 +133,9 @@
           <mat-icon>add_circle</mat-icon>
         </button>
 
-        <button
-          mat-button
-          (click)="onSaveEC()"
-        >
-          <mat-icon>save</mat-icon>
-        </button>
       </div>
       <h3>2. Tratamiento de desechos generados</h3>
-      <div class="Row top-0">
+      <div class="Row top-0"  *ngFor="let dataTD of dataArrayTD; let i=index;">
         <div class="Col col-small-space">
           <label class="label-small-input">
             Vertedero
@@ -131,9 +143,9 @@
           <mat-form-field>
             <input
               class="input-general"
-              [(ngModel)]="vertedero"
+              [(ngModel)]="dataTD.vertedero"
               name="vertedero"
-              matInput 
+              matInput
               type="number"
             >
           </mat-form-field>
@@ -145,9 +157,9 @@
           <mat-form-field>
             <input
               class="input-general"
-              [(ngModel)]="reciclaje"
+              [(ngModel)]="dataTD.reciclaje"
               name="reciclaje"
-              matInput 
+              matInput
               type="number"
             >
           </mat-form-field>
@@ -159,17 +171,20 @@
           <mat-form-field>
             <input
               class="input-general"
-              [(ngModel)]="reuso"
+              [(ngModel)]="dataTD.reuso"
               name="reuso"
-              matInput 
+              matInput
               type="number"
             >
           </mat-form-field>
         </div>
       </div>
-    </section>
-    <section class="container-details">
-      
+      <button
+          mat-button
+          (click)="onSaveEC()"
+        >
+          <mat-icon>save</mat-icon>
+        </button>
     </section>
   </section>
 </div>
@@ -180,7 +195,7 @@
     mat-button
     class="yellow-button"
     (click)="saveStepFour()"
-  > 
-    Continuar 
+  >
+    Continuar
   </button>
 </div>

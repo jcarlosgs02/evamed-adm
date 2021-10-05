@@ -1,7 +1,7 @@
 .title-standard-second-light {
   width: 100% !important;
-  text-align: center;
-  margin-bottom: 70px;
+  text-align: left;
+  margin-bottom: 50px;
 }
 
 .mat-dialog-content.dialog-content {
@@ -27,7 +27,7 @@ mat-radio-group.mat-radio-group.example-radio-group {
 
 mat-radio-button {
   padding: 14px!important;
-  /* color: palegoldenrod; */
+  width: 236px;
 }
 
 .mat-radio-checked {
@@ -36,12 +36,14 @@ mat-radio-button {
 }
 
 .text-description {
-  width: 50%;
-  margin-left: 25%;
-  margin-top: 16px;
-  margin-bottom: 18px;
+  width: 70%;
+  margin-left: 15%;
+  margin-top: 40px;
+  margin-bottom: 40px;
   text-align: left;
-  font-size: 12px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #767676;
 }
 
 /* Simple setup for this demo */
@@ -134,7 +136,7 @@ mat-radio-button {
 }
 
 .mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-optional {
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-bar-left,
@@ -159,13 +161,13 @@ mat-radio-button {
 
 /**Custom stepper**/
 div.step-one-selected div.mdl-stepper-circle {
-  background: url('./../../assets/images/Etapas/Produccion.png') no-repeat 50% 50%;
+  background: url('./../../../../assets/images/Etapas/Produccion.png') no-repeat 50% 50%;
   width: 70px!important;
   height: 70px!important;
 }
 
 div.step-one-selected div.mdl-stepper-circle-noSelected {
-  background: url('./../../assets/images/Etapas/Produccion_.png') no-repeat 50% 50%;
+  background: url('./../../../../assets/images/Etapas/Produccion_.png') no-repeat 50% 50%;
   width: 70px!important;
   height: 70px!important;
 }
@@ -173,35 +175,35 @@ div.step-one-selected div.mdl-stepper-circle-noSelected {
 
 div.step-two div.mdl-stepper-circle-noSelected {
   background-color: #CBCBCB !important;
-  background: url('./../../assets/images/Etapas/Construcción_.png') no-repeat 50% 50%;
+  background: url('./../../../../assets/images/Etapas/Construcción_.png') no-repeat 50% 50%;
   width: 70px!important;
   height: 70px!important;
 }
 
 div.step-two div.mdl-stepper-circle {
   background-color: #CBCBCB !important;
-  background: url('./../../assets/images/Etapas/Construcción.png') no-repeat 50% 50%;
+  background: url('./../../../../assets/images/Etapas/Construcción.png') no-repeat 50% 50%;
   width: 70px!important;
   height: 70px!important;
 }
 
 div.step-three div.mdl-stepper-circle-noSelected {
   background-color: #CBCBCB !important;
-  background: url('./../../assets/images/Etapas/Uso_.png') no-repeat 50% 50%;
+  background: url('./../../../../assets/images/Etapas/Uso_.png') no-repeat 50% 50%;
   width: 70px!important;
   height: 70px!important;
 }
 
 div.step-three div.mdl-stepper-circle {
   background-color: #CBCBCB !important;
-  background: url('./../../assets/images/Etapas/Uso.png') no-repeat 50% 50%;
+  background: url('./../../../../assets/images/Etapas/Uso.png') no-repeat 50% 50%;
   width: 70px!important;
   height: 70px!important;
 }
 
 div.step-four div.mdl-stepper-circle-noSelected {
   background-color: #CBCBCB !important;
-  background: url('./../../assets/images/Etapas/fin.png') no-repeat 50% 50%;
+  background: url('./../../../../assets/images/Etapas/fin.png') no-repeat 50% 50%;
   width: 70px!important;
   height: 70px!important;
 }
@@ -209,7 +211,7 @@ div.step-four div.mdl-stepper-circle-noSelected {
 
 div.step-four div.mdl-stepper-circle {
   background-color: #CBCBCB !important;
-  background: url('./../../assets/images/Etapas/Fin_.png') no-repeat 50% 50%;
+  background: url('./../../../../assets/images/Etapas/Fin_.png') no-repeat 50% 50%;
   width: 70px!important;
   height: 70px!important;
 }
@@ -227,4 +229,21 @@ td.td-title {
 td.td-text {
   text-align: left;
   padding-left: 2px!important;
+  line-height: initial;
+}
+
+.title-type-project {
+  color: #767676 !important;
+}
+
+.title-type-project-selected {
+  color: #EDC903 !important;
+}
+
+.text-type-project-selected {
+  color: #343434 !important;
+}
+
+.text-type-project {
+  color: #767676 !important;
 }

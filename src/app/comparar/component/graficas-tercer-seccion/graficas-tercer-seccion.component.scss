@@ -1,0 +1,112 @@
+.card-indicador {
+    display: flex;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #cbcbcb;
+    border-radius: 17px;
+    margin-bottom: 15px;
+    padding: 0%;
+    height: 445px;
+    p {
+        text-align: left;
+        font-family: normal normal normal;
+        font-size: 12px;
+        letter-spacing: 0px;
+        color: #767676;
+        opacity: 1;
+    }
+    > div {
+        margin: 10px;
+        &:nth-child(1) {
+          width: 312px;
+          border-right-width: 1px;
+          border-right-style: solid;
+          border-right-color: #cbcbcb;
+          .subtitulo-proyecto{
+              display: flex;
+              mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
+                color: #707070;
+                font-size: 14px;
+                border-radius: 0px 10px 10px 0px;
+                height: 39px;
+                margin-left: 0px;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 0.1px;
+              }
+              button{
+                margin-left: 50px;
+              }
+            }
+          .button-graph {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px;
+            margin-left: 40px;
+            margin-right: 30px;
+          
+            mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
+              font-size: 20px;
+              height: 38px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin: 2px;
+            }
+          }
+          .seccionTresPie {
+            padding-left: 28px;
+          }
+          .seccionTresBar {
+            padding-left: 0px;
+          }
+        }
+        &:nth-child(2) {
+          width: 312px;
+          border-right-width: 1px;
+          border-right-style: solid;
+          border-right-color: #cbcbcb;
+          .seccionTresPie {
+            padding-left: 28px;
+          }
+        }
+        &:nth-child(3) {
+          width: 312px;
+          .example-container {
+            height: 147px;
+            max-width: 100%;
+            overflow: auto;
+          }
+          th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+            padding-left: 4px;
+          }
+          .mat-column-no {
+            width: 27px;
+            padding-right: 6px;
+            text-align: center;
+            color: #ACA8A8;
+          }
+        
+          .mat-column-porcentaje {
+            width: 32px;
+            padding-right: 12px;
+            padding-left: 12px;
+            text-align: center;
+            color: #ACA8A8;
+          }
+        
+          .mat-column-numero {
+            width: 36px;
+            padding-right: 6px;
+            padding-left: 6px;
+            text-align: center;
+            color: #ACA8A8;
+          }
+        
+          .mat-column-material{
+            color: #ACA8A8;
+          }
+        }
+    }
+}
