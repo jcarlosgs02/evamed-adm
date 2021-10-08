@@ -93,7 +93,16 @@ export class ToDoFileComponent implements OnInit {
       });
     return;
   }
-
+  
+ selectedFile() {
+     var archivoSeleccionado = document.getElementById("myfile");
+     var file = archivoSeleccionado.files[0];
+         if (file) {
+           var divfileType = document.getElementById('fileType');
+           divfileType.innerHTML = 'Archivo cargado: ' + file.name;
+           }
+  }     
+  
   saveFile() {
     this.dialog.open(PrevStepsComponent);
   }
