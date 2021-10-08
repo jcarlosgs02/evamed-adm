@@ -30,7 +30,7 @@ export class ToDoFileComponent implements OnInit {
   onFileChange(evt: any) {
     console.log('acción de botón!!!!!');
      
-     var archivoSeleccionado = document.getElementById("myfile");
+     var archivoSeleccionado = document.getElementById("file");
      var file = archivoSeleccionado.files[0];
          if (file) {
            var divfileType = document.getElementById('fileType');
