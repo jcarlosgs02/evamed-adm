@@ -51,9 +51,7 @@
           </p>
           <div class="container-upload-icon">
             <img src="assets/images/Icon awesome-file-upload.png" class="img-upload" />
-
-            <input type="file" id="file" (change)="onFileChange($event)" multiple="false" class="input-upload" />
-
+            <input type="file" id="file" onchange="selectedFile();" multiple="false" class="input-upload" />
             <label for="file" id="fileType" class="title-action">cargar archivo</label>
           </div>
         </div>

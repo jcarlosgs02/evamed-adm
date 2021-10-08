@@ -29,14 +29,6 @@ export class ToDoFileComponent implements OnInit {
 
   onFileChange(evt: any) {
     console.log('acción de botón!!!!!');
-     
-     var archivoSeleccionado = document.getElementById("myfile");
-     var file = archivoSeleccionado.files[0];
-         if (file) {
-           var divfileType = document.getElementById('fileType');
-           divfileType.innerHTML = 'Archivo cargado: ' + file.name;
-           }
-     
     /* wire up file reader */
     const target: DataTransfer = evt.target;
 
@@ -101,9 +93,7 @@ export class ToDoFileComponent implements OnInit {
       });
     return;
   }
-  
 
-  
   saveFile() {
     this.dialog.open(PrevStepsComponent);
   }
