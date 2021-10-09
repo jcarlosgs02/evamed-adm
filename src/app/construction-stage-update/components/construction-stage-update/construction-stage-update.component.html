@@ -103,7 +103,7 @@
                 </label>
                 <mat-form-field appearance="outline">
                   <mat-form-field>
-                  <input class="input-general" [(ngModel)]="data.energy_unit_id" name="fuente{{i}}" matInput type="input" disable>
+                  <input class="input-general" [(ngModel)]="data.energy_unit_id" name="fuente{{i}}" [value]="unidad.id matInput type="input" disable>
                 </mat-form-field>
                   <mat-label>Seleccione una opción</mat-label>
                   <mat-select [(ngModel)]="data.energy_unit_id" name="fuente{{i}}">
