@@ -35,7 +35,8 @@ export class ToDoFileComponent implements OnInit {
     console.log('acción de botón!!!!!');
     const asTitle=this.title.nativeElement;
      console.log(asTitle);
-     this.renderer2.setProperty(asTitle,'innerHTML','Archivo Cargado');
+    var file= document.getElementById('file').files[0].name;
+     this.renderer2.setProperty(asTitle,'innerHTML',file);
      
     /* wire up file reader */
     const target: DataTransfer = evt.target;
