@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import * as XLSX from 'xlsx';
 import { FileSaverService } from 'ngx-filesaver';
 import { MatDialog } from '@angular/material/dialog';
-import { PrevStepsComponent } from 'src/app/to-do-file/components/prev-steps/prev-steps.component';
-
+import { PrevStepsComponent} from 'src/app/to-do-file/components/prev-steps/prev-steps.component';
+import { ElemetRef,Render2,ViewChild } from '@angular/core';
 type AOA = any[][];
 
 @Component({
@@ -16,6 +16,9 @@ export class ToDoFileComponent implements OnInit {
   fileName: string;
   nameProject: string;
 
+  @ViewChild('asTitle') title: ElementRef;
+  
+  
   constructor(
     private httpClient: HttpClient,
     private fileSaverService: FileSaverService,
@@ -29,7 +32,8 @@ export class ToDoFileComponent implements OnInit {
 
   onFileChange(evt: any) {
     console.log('acción de botón!!!!!');
-     
+    const asTitle=this.title.nativeElement;
+     consol.log(asTitle);
      
      
     /* wire up file reader */
