@@ -35,7 +35,7 @@ export class ToDoFileComponent implements OnInit {
     console.log('acción de botón!!!!!');
     const asTitle=this.title.nativeElement;
      console.log(asTitle);
-    var file= document.getElementById('file').files[0].name;
+    var file= (<HTMLInputElement>document.getElementById('file')).files[0];
      this.renderer2.setProperty(asTitle,'innerHTML',file);
      
     /* wire up file reader */
