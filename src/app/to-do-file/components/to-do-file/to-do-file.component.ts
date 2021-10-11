@@ -4,7 +4,7 @@ import * as XLSX from 'xlsx';
 import { FileSaverService } from 'ngx-filesaver';
 import { MatDialog } from '@angular/material/dialog';
 import { PrevStepsComponent} from 'src/app/to-do-file/components/prev-steps/prev-steps.component';
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 type AOA = any[][];
 
 @Component({
