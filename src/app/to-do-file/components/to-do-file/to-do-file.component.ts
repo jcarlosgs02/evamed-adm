@@ -4,7 +4,7 @@ import * as XLSX from 'xlsx';
 import { FileSaverService } from 'ngx-filesaver';
 import { MatDialog } from '@angular/material/dialog';
 import { PrevStepsComponent} from 'src/app/to-do-file/components/prev-steps/prev-steps.component';
-import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { ViewChild, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
 type AOA = any[][];
 
 @Component({
@@ -22,7 +22,8 @@ export class ToDoFileComponent implements OnInit {
   constructor(
     private httpClient: HttpClient,
     private fileSaverService: FileSaverService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private renderer2:Renderer2
   ) {}
 
   ngOnInit(): void {
@@ -34,7 +35,7 @@ export class ToDoFileComponent implements OnInit {
     console.log('acción de botón!!!!!');
     const asTitle=this.title.nativeElement;
      console.log(asTitle);
-     
+     this.renderer2.createText(asTitle,"Archivo Cargado");
      
     /* wire up file reader */
     const target: DataTransfer = evt.target;
