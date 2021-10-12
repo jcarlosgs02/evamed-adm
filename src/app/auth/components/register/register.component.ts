@@ -47,9 +47,9 @@ export class RegisterComponent implements OnInit {
         alert('las contraseñas deben de coincidir');
       }
 
-    }
-  }else{
+    }else{
   alert('El correo ya esta registrado con otro usuario');
+  }
   }
 
   private buildForm() {
