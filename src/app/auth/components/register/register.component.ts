@@ -48,6 +48,8 @@ export class RegisterComponent implements OnInit {
       }
 
     }
+  }else{
+  alert('El correo ya esta registrado con otro usuario');
   }
 
   private buildForm() {
