@@ -48,7 +48,7 @@
             {{project.name_project}}
           </div>
           <div class="date-tag">
-            {{project.use_id}}
+            <ng-template [ngIf]="project.use_id==1"><div>Habitacional</div></ng-template>
           </div>
         </div>
       </div>
