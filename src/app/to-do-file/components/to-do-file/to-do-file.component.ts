@@ -39,7 +39,7 @@ export class ToDoFileComponent implements OnInit {
     var file= (<HTMLInputElement>document.getElementById('file')).files[0].name;
      this.renderer2.setProperty(asTitle,'innerHTML',file);
     
-     this.renderer2.setAttribute(asImage,'src','assets/images/Icon awesome-file-download.png',);
+     this.renderer2.setAttribute(asImage,'src','Icon awesome-file-upload-gren.png',);
     /* wire up file reader */
     const target: DataTransfer = evt.target;
 
