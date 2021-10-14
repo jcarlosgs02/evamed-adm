@@ -42,10 +42,10 @@ export class RegisterComponent implements OnInit {
         this.user.addUser(value).subscribe(data => {});
         this.authService.createUser(value.email, value.password).then(() => {
           this.router.navigate(['/auth/login']);
-        };}.catch(function(err)
+        }.catch(function(err)
  {
 alert("El correo ya esta registrado con otro usuario,intenta con un nuevo correo")
- });
+ }); 
       } else {
         alert('las contraseñas deben de coincidir');
       }
