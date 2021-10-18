@@ -101,11 +101,13 @@
                 <label class="label-small-input">
                   Unidad
                 </label>
-                <mat-form-field appearance="outline">
-                  
-                      
-                     <input class="input-general" *ngFor="let unidad of catalogoUnidadEnergia" name="fuente{{i}}" value="unidad.id" matInput type="input">
-                    {{unidad.name_energy_unit}}
+                 <mat-form-field appearance="outline">
+                  <mat-label>Seleccione una opción</mat-label>
+                  <mat-select [(ngModel)]="data.energy_unit_id" name="fuente{{i}}">
+                    <mat-option *ngFor="let unidad of catalogoUnidadEnergia" [value]="unidad.id">
+                      {{unidad.name_energy_unit}}
+                    </mat-option>
+                  </mat-select>
                 </mat-form-field>
               </div>
               <div class="Col col-small-space">
