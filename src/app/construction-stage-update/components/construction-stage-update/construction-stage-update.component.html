@@ -104,7 +104,7 @@
                  <mat-form-field appearance="outline">
 
                 <mat-label>Seleccione una opción</mat-label>
-                  <mat-select  [(ngModel)]="data.unidad" name="fuente{{i}}">
+                  <mat-select  [(ngModel)]="data.unidad" style="display:none" name="fuente{{i}}">
                     <mat-option *ngFor="let unidad of catalogoUnidadEnergia" [value]="unidad.id">
                       
                     </mat-option>
