@@ -213,7 +213,7 @@ export class UsageStageUpdateComponent implements OnInit {
   }
   
  
-function input(ele) {
+  input(ele) {
     
     delayTimer = setTimeout(function() {
        ele.value = parseFloat(ele.value).toFixed(2).toString();
