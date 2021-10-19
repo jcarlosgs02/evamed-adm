@@ -211,7 +211,15 @@ export class UsageStageUpdateComponent implements OnInit {
       })
     );
   }
-
+  
+  var delayTimer;
+  function input(ele) {
+    clearTimeout(delayTimer);
+    delayTimer = setTimeout(function() {
+       ele.value = parseFloat(ele.value).toFixed(2).toString();
+    }, 1100); 
+  }
+  
   goToMaterialStage() {
     this.router.navigateByUrl('materials-stage');
   }
