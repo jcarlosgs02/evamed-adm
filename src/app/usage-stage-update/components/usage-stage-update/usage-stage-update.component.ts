@@ -214,7 +214,7 @@ export class UsageStageUpdateComponent implements OnInit {
   
  
   
-function input(ele) {
+ input(ele) {
     
   
        ele.value = parseFloat(ele.value).toFixed(2).toString();
