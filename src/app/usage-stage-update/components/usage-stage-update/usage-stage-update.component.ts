@@ -213,11 +213,12 @@ export class UsageStageUpdateComponent implements OnInit {
   }
   
  
-  input(ele) {
+  
+function input(ele) {
     
-    delayTimer = setTimeout(function() {
+  
        ele.value = parseFloat(ele.value).toFixed(2).toString();
-    }, 1100); 
+   
 }
   
   goToMaterialStage() {
