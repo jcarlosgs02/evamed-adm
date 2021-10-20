@@ -127,10 +127,10 @@ export class UsageStageUpdateComponent implements OnInit {
      this.cantidadMixElectrico =cantidadMixElectrico.toFixed(2).toString();
     this.porcentajeMixElectrico = (cantidadMixElectrico * 100) / this.cantidad;
     this.suma=this.cantidadMixElectrico+this.cantidadCombustible+this.cantidadPanelesFotovoltaicos;
-    consol.log(this.suma);
+    console.log(this.suma);
     if(this.suma > this.cantidad){
      alert("la cantidad supera el consumo anual requerido");
-    }else{ consol.log(this.suma);}
+    }else{ console.log(this.suma);}
   }
 
   changePorcentajeME(porcentajeMixElectrico) {
