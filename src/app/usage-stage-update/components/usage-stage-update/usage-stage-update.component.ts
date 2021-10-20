@@ -124,7 +124,7 @@ export class UsageStageUpdateComponent implements OnInit {
   input(cantidadMixElectrico) { 
       
       
-       this.cantidadMixElectrico =parseFloat(cantidadMixElectrico).toFixed(2).toString();
+       this.cantidadMixElectrico =cantidadMixElectrico.toFixed(2).toString();
   }
   changeCantidadME(cantidadMixElectrico) {
     this.porcentajeMixElectrico = (cantidadMixElectrico * 100) / this.cantidad;
