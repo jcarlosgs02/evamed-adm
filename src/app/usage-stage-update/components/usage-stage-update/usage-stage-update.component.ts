@@ -121,33 +121,39 @@ export class UsageStageUpdateComponent implements OnInit {
 
   ngOnInit() {}
   
-  input(elemento) { 
-      
-      
-       elemento =elemento.toFixed(2).toString();
-  }
+ 
   changeCantidadME(cantidadMixElectrico) {
+     this.cantidadMixElectrico =cantidadMixElectrico.toFixed(2).toString();
     this.porcentajeMixElectrico = (cantidadMixElectrico * 100) / this.cantidad;
+   
   }
 
   changePorcentajeME(porcentajeMixElectrico) {
+    this.porcentajeMixElectrico =porcentajeMixElectrico.toFixed(2).toString();
     this.cantidadMixElectrico = (porcentajeMixElectrico * this.cantidad) / 100;
+    
   }
 
   changeCantidadC(cantidadCombustible) {
+    this.cantidadCombustible =cantidadCombustible.toFixed(2).toString();
     this.porcentajeCombustible = (cantidadCombustible * 100) / this.cantidad;
+    
   }
 
   changePorcentajeC(porcentajeCombustible) {
+    this.porcentajeCombustible =porcentajeCombustible.toFixed(2).toString();
     this.cantidadCombustible = (porcentajeCombustible * this.cantidad) / 100;
+    
   }
 
   changeCantidadPF(cantidadPanelesFotovoltaicos) {
+    this.cantidadPanelesFotovoltaicos =cantidadPanelesFotovoltaicos.toFixed(2).toString();
     this.porcentajePanelesFotovoltaicos =
       (cantidadPanelesFotovoltaicos * 100) / this.cantidad;
   }
 
   changePorcentajePF(porcentajePanelesFotovoltaicos) {
+     this.porcentajePanelesFotovoltaicos =porcentajePanelesFotovoltaicos.toFixed(2).toString();
     this.cantidadPanelesFotovoltaicos =
       (porcentajePanelesFotovoltaicos * this.cantidad) / 100;
   }
