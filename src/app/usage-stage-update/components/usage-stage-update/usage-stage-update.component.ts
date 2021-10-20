@@ -121,11 +121,14 @@ export class UsageStageUpdateComponent implements OnInit {
 
   ngOnInit() {}
   
- osOnChangeTimerDelay = 3000;
+ 
   changeCantidadME(cantidadMixElectrico) {
      this.cantidadMixElectrico =cantidadMixElectrico.toFixed(2).toString();
     this.porcentajeMixElectrico = (cantidadMixElectrico * 100) / this.cantidad;
-   
+    suma=this.cantidadMixElectrico+this.cantidadCombustible+this.cantidadPanelesFotovoltaicos;
+    if(suma > this.cantidad){
+     alert("la cantidad supera el consumo anual requerido");
+    }
   }
 
   changePorcentajeME(porcentajeMixElectrico) {
