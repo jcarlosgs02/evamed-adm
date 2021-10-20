@@ -28,6 +28,7 @@ export class UsageStageUpdateComponent implements OnInit {
   cantidadPanelesFotovoltaicos: number;
   unidadPanelesFotovoltaicos: number;
   porcentajePanelesFotovoltaicos: number;
+  suma:number;
 
   panelOpenFirst = false;
   panelOpenSecond = false;
@@ -125,8 +126,8 @@ export class UsageStageUpdateComponent implements OnInit {
   changeCantidadME(cantidadMixElectrico) {
      this.cantidadMixElectrico =cantidadMixElectrico.toFixed(2).toString();
     this.porcentajeMixElectrico = (cantidadMixElectrico * 100) / this.cantidad;
-    suma=this.cantidadMixElectrico+this.cantidadCombustible+this.cantidadPanelesFotovoltaicos;
-    if(suma > this.cantidad){
+    this.suma=this.cantidadMixElectrico+this.cantidadCombustible+this.cantidadPanelesFotovoltaicos;
+    if(this.suma > this.cantidad){
      alert("la cantidad supera el consumo anual requerido");
     }
   }
