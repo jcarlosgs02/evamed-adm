@@ -120,7 +120,12 @@ export class UsageStageUpdateComponent implements OnInit {
   }
 
   ngOnInit() {}
-
+  
+  input(cantidadMixElectrico) { 
+      
+      
+       this.cantidadMixElectrico =parseFloat(cantidadMixElectrico).toFixed(2).toString();
+  }
   changeCantidadME(cantidadMixElectrico) {
     this.porcentajeMixElectrico = (cantidadMixElectrico * 100) / this.cantidad;
   }
@@ -214,12 +219,7 @@ export class UsageStageUpdateComponent implements OnInit {
   
  
   
- input(ele) {
-    
-  
-       ele.value = parseFloat(ele.value).toFixed(2).toString();
-   
-}
+ 
   
   goToMaterialStage() {
     this.router.navigateByUrl('materials-stage');
