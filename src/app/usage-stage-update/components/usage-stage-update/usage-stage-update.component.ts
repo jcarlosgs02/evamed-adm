@@ -121,10 +121,10 @@ export class UsageStageUpdateComponent implements OnInit {
 
   ngOnInit() {}
   
-  input(cantidadMixElectrico) { 
+  input(elemento) { 
       
       
-       this.cantidadMixElectrico =cantidadMixElectrico.toFixed(2).toString();
+       this.elemento =elemento.toFixed(2).toString();
   }
   changeCantidadME(cantidadMixElectrico) {
     this.porcentajeMixElectrico = (cantidadMixElectrico * 100) / this.cantidad;
