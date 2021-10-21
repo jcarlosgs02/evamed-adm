@@ -196,6 +196,7 @@ export class MaterialStageUpdateComponent implements OnInit {
 
   preload(resources) {
    resources.forEach(url => fetch(url));
+    console.log("imagen cargada");
   }
   onGroupsChange(options: MatListOption[]) {
     options.map((option) => {
