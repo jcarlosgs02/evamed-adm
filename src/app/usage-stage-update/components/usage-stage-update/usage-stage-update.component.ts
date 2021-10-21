@@ -124,7 +124,7 @@ export class UsageStageUpdateComponent implements OnInit {
   
  
   changeCantidadME(cantidadMixElectrico) {
-    setTimeout(()=>{ 
+    
      this.cantidadMixElectrico =cantidadMixElectrico.toFixed(2).toString();
     this.porcentajeMixElectrico = (cantidadMixElectrico * 100) / this.cantidad;
     
@@ -134,8 +134,9 @@ export class UsageStageUpdateComponent implements OnInit {
     if(this.suma > this.cantidad){
      alert("la cantidad supera el consumo anual requerido");
       this.cantidadMixElectrico=0;
+      this.porcentajeMixElectrico=0;
     }else{ console.log(this.suma);}
-      }, 4000)
+      
   }
 
   changePorcentajeME(porcentajeMixElectrico) {
@@ -148,6 +149,7 @@ export class UsageStageUpdateComponent implements OnInit {
     if(this.suma > 100){
      alert("la cantidad supera el consumo anual requerido");
       this.porcentajeMixElectrico=0;
+      this.cantidadMixElectrico=0;
     }else{ console.log(this.suma);}
   
   }
@@ -163,6 +165,7 @@ export class UsageStageUpdateComponent implements OnInit {
     if(this.suma > this.cantidad){
      alert("la cantidad supera el consumo anual requerido");
       this.cantidadCombustible=0;
+      this.porcentajeCombustible=0;
     }else{ console.log(this.suma);}
   
   }
@@ -177,6 +180,7 @@ export class UsageStageUpdateComponent implements OnInit {
     if(this.suma > 100){
      alert("la cantidad supera el consumo anual requerido");
       this.porcentajeCombustible=0;
+      this.cantidadCombustible=0;
     }else{ console.log(this.suma);}
   
   
@@ -193,6 +197,7 @@ export class UsageStageUpdateComponent implements OnInit {
     if(this.suma > this.cantidad){
      alert("la cantidad supera el consumo anual requerido");
       this.cantidadPanelesFotovoltaicos=0;
+      this.porcentajePanelesFotovoltaicos=0;
     }else{ console.log(this.suma);}
   
   }
@@ -208,6 +213,7 @@ export class UsageStageUpdateComponent implements OnInit {
     if(this.suma > 100){
      alert("la cantidad supera el consumo anual requerido");
       this.porcentajePanelesFotovoltaicos=0;
+      this.cantidadPanelesFotovoltaicos=0;
     }else{ console.log(this.suma);}
   
   
