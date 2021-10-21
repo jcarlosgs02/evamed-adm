@@ -151,7 +151,7 @@ export class MaterialStageUpdateComponent implements OnInit {
       "../../../../assets/map/13.jpg",
       "../../../../assets/map/14.jpg"
     ];
-    preload(images);
+    this.preload(images);
     // fragmento para autocompletado
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
