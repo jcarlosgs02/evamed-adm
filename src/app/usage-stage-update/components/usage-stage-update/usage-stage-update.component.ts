@@ -126,7 +126,7 @@ export class UsageStageUpdateComponent implements OnInit {
   changeCantidadME(cantidadMixElectrico) {
      this.cantidadMixElectrico =cantidadMixElectrico.toFixed(2).toString();
     this.porcentajeMixElectrico = (cantidadMixElectrico * 100) / this.cantidad;
-    this.porcentajeMixElectrico = this.porcentajeMixElectrico.toFixed(2).toString();
+    this.porcentajeMixElectrico = Number(this.porcentajeMixElectrico.toFixed(2).toString());
     this.suma=+this.cantidadMixElectrico + +this.cantidadCombustible + +this.cantidadPanelesFotovoltaicos;
     
     console.log(this.suma);
@@ -139,7 +139,7 @@ export class UsageStageUpdateComponent implements OnInit {
   changePorcentajeME(porcentajeMixElectrico) {
     this.porcentajeMixElectrico =porcentajeMixElectrico.toFixed(2).toString();
     this.cantidadMixElectrico = (porcentajeMixElectrico * this.cantidad) / 100;
-    this.cantidadMixElectrico =this.cantidadMixElectrico.toFixed(2).toString();
+    this.cantidadMixElectrico =Number(this.cantidadMixElectrico.toFixed(2).toString());
     this.suma=+this.porcentajeMixElectrico + +this.porcentajeCombustible + +this.porcentajePanelesFotovoltaicos;
     
     console.log(this.suma);
