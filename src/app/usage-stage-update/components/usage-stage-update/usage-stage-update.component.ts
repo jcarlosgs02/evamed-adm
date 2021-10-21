@@ -141,7 +141,7 @@ export class UsageStageUpdateComponent implements OnInit {
 
   changePorcentajeME(porcentajeMixElectrico) {
     this.porcentajeMixElectrico =porcentajeMixElectrico.toFixed(2).toString();
-    this.cantidadMixElectrico = Math.round(((((porcentajeMixElectrico * this.cantidad) / 100) * 100) / 100);
+    this.cantidadMixElectrico = Math.round((((porcentajeMixElectrico * this.cantidad) / 100) * 100) / 100);
     
     this.suma=+this.porcentajeMixElectrico + +this.porcentajeCombustible + +this.porcentajePanelesFotovoltaicos;
     
