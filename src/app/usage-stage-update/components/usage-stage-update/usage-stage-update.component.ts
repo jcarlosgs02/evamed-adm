@@ -147,7 +147,7 @@ export class UsageStageUpdateComponent implements OnInit {
      alert("la cantidad supera el consumo anual requerido");
       this.porcentajeMixElectrico=0;
     }else{ console.log(this.suma);}
-  }
+  
   }
 
   changeCantidadC(cantidadCombustible) {
@@ -162,7 +162,7 @@ export class UsageStageUpdateComponent implements OnInit {
      alert("la cantidad supera el consumo anual requerido");
       this.cantidadCombustible=0;
     }else{ console.log(this.suma);}
-  }
+  
   }
 
   changePorcentajeC(porcentajeCombustible) {
@@ -176,8 +176,8 @@ export class UsageStageUpdateComponent implements OnInit {
      alert("la cantidad supera el consumo anual requerido");
       this.porcentajeCombustible=0;
     }else{ console.log(this.suma);}
-  }
-  }
+  
+  
   }
 
   changeCantidadPF(cantidadPanelesFotovoltaicos) {
@@ -192,7 +192,7 @@ export class UsageStageUpdateComponent implements OnInit {
      alert("la cantidad supera el consumo anual requerido");
       this.cantidadPanelesFotovoltaicos=0;
     }else{ console.log(this.suma);}
-  }
+  
   }
 
   changePorcentajePF(porcentajePanelesFotovoltaicos) {
@@ -207,8 +207,8 @@ export class UsageStageUpdateComponent implements OnInit {
      alert("la cantidad supera el consumo anual requerido");
       this.porcentajePanelesFotovoltaicos=0;
     }else{ console.log(this.suma);}
-  }
-  }
+  
+  
   }
 
   saveStepThree() {
