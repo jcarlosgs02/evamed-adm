@@ -203,6 +203,7 @@
                     <input
                       class="input-general"
                       [(ngModel)]="cantidadCombustible"
+                      [ngModelOptions]="{ updateOn: 'blur' }"
                       (ngModelChange)="changeCantidadC(cantidadCombustible)"
                       name="cantidad"
                       matInput
@@ -233,6 +234,7 @@
                     <input
                       class="input-general"
                       [(ngModel)]="porcentajeCombustible"
+                      [ngModelOptions]="{ updateOn: 'blur' }"
                       (ngModelChange)="changePorcentajeC(porcentajeCombustible)"
                       name="cantidad"
                       matInput
@@ -266,6 +268,7 @@
                     <input
                       class="input-general"
                       [(ngModel)]="cantidadPanelesFotovoltaicos"
+                      [ngModelOptions]="{ updateOn: 'blur' }"
                       (ngModelChange)="changeCantidadPF(cantidadPanelesFotovoltaicos)"
                       name="cantidad"
                       matInput
@@ -296,6 +299,7 @@
                     <input
                       class="input-general"
                       [(ngModel)]="porcentajePanelesFotovoltaicos"
+                      [ngModelOptions]="{ updateOn: 'blur' }"
                       (ngModelChange)="changePorcentajePF(porcentajePanelesFotovoltaicos)"
                       name="cantidad"
                       matInput
