@@ -152,6 +152,7 @@ export class MaterialStageUpdateComponent implements OnInit {
       "../../../../assets/map/14.jpg"
     ];
     this.preload(images);
+    
     // fragmento para autocompletado
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
@@ -195,8 +196,7 @@ export class MaterialStageUpdateComponent implements OnInit {
   }
 
   preload(resources) {
-   resources.forEach(url => fetch(url));
-    console.log("imagen cargada");
+  resources.forEach(url => fetch(url,{mode:'no-cors'}).then(()=> console.log('imagen', url,'cargada')));
   }
   onGroupsChange(options: MatListOption[]) {
     options.map((option) => {
