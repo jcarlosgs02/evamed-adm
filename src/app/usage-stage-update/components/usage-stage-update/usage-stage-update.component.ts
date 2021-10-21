@@ -156,7 +156,7 @@ export class UsageStageUpdateComponent implements OnInit {
 
   changeCantidadC(cantidadCombustible) {
     this.cantidadCombustible =cantidadCombustible.toFixed(2).toString();
-    this.porcentajeCombustible = (cantidadCombustible * 100) / this.cantidad;
+    this.porcentajeCombustible = Math.round((((cantidadCombustible * 100) / this.cantidad) * 100) / 100);
     
     
      this.suma=+this.cantidadMixElectrico + +this.cantidadCombustible + +this.cantidadPanelesFotovoltaicos;
@@ -172,7 +172,7 @@ export class UsageStageUpdateComponent implements OnInit {
 
   changePorcentajeC(porcentajeCombustible) {
     this.porcentajeCombustible =porcentajeCombustible.toFixed(2).toString();
-    this.cantidadCombustible = (porcentajeCombustible * this.cantidad) / 100;
+    this.cantidadCombustible = Math.round((((porcentajeCombustible * this.cantidad) / 100) * 100) / 100);
    
      this.suma=+this.porcentajeMixElectrico + +this.porcentajeCombustible + +this.porcentajePanelesFotovoltaicos;
     
@@ -189,7 +189,7 @@ export class UsageStageUpdateComponent implements OnInit {
   changeCantidadPF(cantidadPanelesFotovoltaicos) {
     this.cantidadPanelesFotovoltaicos =cantidadPanelesFotovoltaicos.toFixed(2).toString();
     this.porcentajePanelesFotovoltaicos =
-      (cantidadPanelesFotovoltaicos * 100) / this.cantidad;
+      Math.round((((cantidadPanelesFotovoltaicos * 100) / this.cantidad) * 100) / 100);
     
      this.suma=+this.cantidadMixElectrico + +this.cantidadCombustible + +this.cantidadPanelesFotovoltaicos;
     
@@ -205,7 +205,7 @@ export class UsageStageUpdateComponent implements OnInit {
   changePorcentajePF(porcentajePanelesFotovoltaicos) {
      this.porcentajePanelesFotovoltaicos =porcentajePanelesFotovoltaicos.toFixed(2).toString();
     this.cantidadPanelesFotovoltaicos =
-      (porcentajePanelesFotovoltaicos * this.cantidad) / 100;
+      Math.round((((porcentajePanelesFotovoltaicos * this.cantidad) / 100) * 100) / 100);
    
      this.suma=+this.porcentajeMixElectrico + +this.porcentajeCombustible + +this.porcentajePanelesFotovoltaicos;
     
