@@ -120,6 +120,7 @@
                     <input
                       class="input-general"
                       [(ngModel)]="cantidadMixElectrico"
+                      [ngModelOptions]="{ updateOn: 'blur' }"
                       (ngModelChange)="changeCantidadME(cantidadMixElectrico)"
                       name="cantidad"
                       matInput
@@ -150,6 +151,7 @@
                     <input
                       class="input-general"
                       [(ngModel)]="porcentajeMixElectrico"
+                      [ngModelOptions]="{ updateOn: 'blur' }"
                       (ngModelChange)="changePorcentajeME(porcentajeMixElectrico)"
                       name="cantidad"
                       matInput
