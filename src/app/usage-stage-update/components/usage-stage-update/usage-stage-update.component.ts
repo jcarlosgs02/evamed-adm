@@ -124,7 +124,7 @@ export class UsageStageUpdateComponent implements OnInit {
   
  
   changeCantidadME(cantidadMixElectrico) {
-    
+    this.suma=0;
      this.cantidadMixElectrico =cantidadMixElectrico.toFixed(2).toString();
     this.porcentajeMixElectrico = Math.round((((cantidadMixElectrico * 100) / this.cantidad) * 100) / 100);
     
@@ -140,6 +140,7 @@ export class UsageStageUpdateComponent implements OnInit {
   }
 
   changePorcentajeME(porcentajeMixElectrico) {
+    this.suma=0;
     this.porcentajeMixElectrico =porcentajeMixElectrico.toFixed(2).toString();
     this.cantidadMixElectrico = Math.round((((porcentajeMixElectrico * this.cantidad) / 100) * 100) / 100);
     
@@ -155,6 +156,7 @@ export class UsageStageUpdateComponent implements OnInit {
   }
 
   changeCantidadC(cantidadCombustible) {
+    this.suma=0;
     this.cantidadCombustible =cantidadCombustible.toFixed(2).toString();
     this.porcentajeCombustible = Math.round((((cantidadCombustible * 100) / this.cantidad) * 100) / 100);
     
@@ -171,6 +173,7 @@ export class UsageStageUpdateComponent implements OnInit {
   }
 
   changePorcentajeC(porcentajeCombustible) {
+    this.suma=0;
     this.porcentajeCombustible =porcentajeCombustible.toFixed(2).toString();
     this.cantidadCombustible = Math.round((((porcentajeCombustible * this.cantidad) / 100) * 100) / 100);
    
@@ -187,6 +190,7 @@ export class UsageStageUpdateComponent implements OnInit {
   }
 
   changeCantidadPF(cantidadPanelesFotovoltaicos) {
+    this.suma=0;
     this.cantidadPanelesFotovoltaicos =cantidadPanelesFotovoltaicos.toFixed(2).toString();
     this.porcentajePanelesFotovoltaicos =
       Math.round((((cantidadPanelesFotovoltaicos * 100) / this.cantidad) * 100) / 100);
@@ -203,6 +207,7 @@ export class UsageStageUpdateComponent implements OnInit {
   }
 
   changePorcentajePF(porcentajePanelesFotovoltaicos) {
+    this.suma=0;
      this.porcentajePanelesFotovoltaicos =porcentajePanelesFotovoltaicos.toFixed(2).toString();
     this.cantidadPanelesFotovoltaicos =
       Math.round((((porcentajePanelesFotovoltaicos * this.cantidad) / 100) * 100) / 100);
