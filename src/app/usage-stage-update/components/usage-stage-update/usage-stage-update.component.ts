@@ -128,7 +128,7 @@ export class UsageStageUpdateComponent implements OnInit {
   
   changeCantidadME(cantidadMixElectrico) {
     this.suma=0;
-     this.cantidadMixElectrico =cantidadMixElectrico.toFixed(2).toString();
+     this.cantidadMixElectrico =Math.round((cantidadMixElectrico * 100) / 100);
     this.porcentajeMixElectrico = Math.round((((cantidadMixElectrico * 100) / this.cantidad) * 100) / 100);
     
     this.suma=+this.cantidadMixElectrico + +this.cantidadCombustible + +this.cantidadPanelesFotovoltaicos;
@@ -160,7 +160,7 @@ export class UsageStageUpdateComponent implements OnInit {
 
   changeCantidadC(cantidadCombustible) {
     this.suma=0;
-    this.cantidadCombustible =cantidadCombustible.toFixed(2).toString();
+    this.cantidadCombustible =Math.round((cantidadCombustible * 100) / 100);
     this.porcentajeCombustible = Math.round((((cantidadCombustible * 100) / this.cantidad) * 100) / 100);
     
     
@@ -177,7 +177,7 @@ export class UsageStageUpdateComponent implements OnInit {
 
   changePorcentajeC(porcentajeCombustible) {
     this.suma=0;
-    this.porcentajeCombustible =porcentajeCombustible.toFixed(2).toString();
+    this.porcentajeCombustible =Math.round((porcentajeCombustible * 100) / 100);
     this.cantidadCombustible = Math.round((((porcentajeCombustible * this.cantidad) / 100) * 100) / 100);
    
      this.suma=+this.porcentajeMixElectrico + +this.porcentajeCombustible + +this.porcentajePanelesFotovoltaicos;
@@ -194,7 +194,7 @@ export class UsageStageUpdateComponent implements OnInit {
 
   changeCantidadPF(cantidadPanelesFotovoltaicos) {
     this.suma=0;
-    this.cantidadPanelesFotovoltaicos =cantidadPanelesFotovoltaicos.toFixed(2).toString();
+    this.cantidadPanelesFotovoltaicos =Math.round((cantidadPanelesFotovoltaicos * 100) / 100);
     this.porcentajePanelesFotovoltaicos =
       Math.round((((cantidadPanelesFotovoltaicos * 100) / this.cantidad) * 100) / 100);
     
@@ -211,7 +211,7 @@ export class UsageStageUpdateComponent implements OnInit {
 
   changePorcentajePF(porcentajePanelesFotovoltaicos) {
     this.suma=0;
-     this.porcentajePanelesFotovoltaicos =porcentajePanelesFotovoltaicos.toFixed(2).toString();
+     this.porcentajePanelesFotovoltaicos =Math.round((porcentajePanelesFotovoltaicos * 100) / 100);
     this.cantidadPanelesFotovoltaicos =
       Math.round((((porcentajePanelesFotovoltaicos * this.cantidad) / 100) * 100) / 100);
    
