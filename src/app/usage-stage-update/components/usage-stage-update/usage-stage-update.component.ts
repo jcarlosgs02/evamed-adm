@@ -124,13 +124,39 @@ export class UsageStageUpdateComponent implements OnInit {
   
   
   
-   
+   if(this.cantidadMixElectrico==null){
+    this.cantidadMixElectrico=0;
+  }
+  if(this.cantidadCombustible==null){
+    this.cantidadCombustible=0;
+  }
+  if(this.cantidadPanelesFotovoltaicos==null){
+    this.cantidadPanelesFotovoltaicos=0;
+  }
+  
+  if(this.porcentajeMixElectrico==null){
+    this.porcentajeMixElectrico=0;
+  }
+  if(this.porcentajeCombustible==null){
+   this.porcentajeCombustible=0;
+  }
+  if(this.porcentajePanelesFotovoltaicos==null){
+    this.porcentajePanelesFotovoltaicos=0;
+  }
+
   
   changeCantidadME(cantidadMixElectrico) {
     this.suma=0;
      this.cantidadMixElectrico =Math.round((cantidadMixElectrico * 100) / 100);
     this.porcentajeMixElectrico = Math.round((((cantidadMixElectrico * 100) / this.cantidad) * 100) / 100);
     
+    
+     if(this.cantidadCombustible==null){
+    this.cantidadCombustible=0;
+  }
+  if(this.cantidadPanelesFotovoltaicos==null){
+    this.cantidadPanelesFotovoltaicos=0;
+  }
     this.suma=+this.cantidadMixElectrico + +this.cantidadCombustible + +this.cantidadPanelesFotovoltaicos;
     
     console.log(this.suma);
@@ -147,6 +173,13 @@ export class UsageStageUpdateComponent implements OnInit {
     this.porcentajeMixElectrico =Math.round((porcentajeMixElectrico * 100) / 100);
     this.cantidadMixElectrico = Math.round((((porcentajeMixElectrico * this.cantidad) / 100) * 100) / 100);
     
+    
+      if(this.porcentajeCombustible==null){
+   this.porcentajeCombustible=0;
+  }
+  if(this.porcentajePanelesFotovoltaicos==null){
+    this.porcentajePanelesFotovoltaicos=0;
+  }
     this.suma=+this.porcentajeMixElectrico + +this.porcentajeCombustible + +this.porcentajePanelesFotovoltaicos;
     
     console.log(this.suma);
@@ -164,6 +197,13 @@ export class UsageStageUpdateComponent implements OnInit {
     this.porcentajeCombustible = Math.round((((cantidadCombustible * 100) / this.cantidad) * 100) / 100);
     
     
+    if(this.cantidadMixElectrico==null){
+    this.cantidadMixElectrico=0;
+  }
+
+  if(this.cantidadPanelesFotovoltaicos==null){
+    this.cantidadPanelesFotovoltaicos=0;
+  }
      this.suma=+this.cantidadMixElectrico + +this.cantidadCombustible + +this.cantidadPanelesFotovoltaicos;
     
     console.log(this.suma);
@@ -180,6 +220,14 @@ export class UsageStageUpdateComponent implements OnInit {
     this.porcentajeCombustible =Math.round((porcentajeCombustible * 100) / 100);
     this.cantidadCombustible = Math.round((((porcentajeCombustible * this.cantidad) / 100) * 100) / 100);
    
+    
+    if(this.porcentajeMixElectrico==null){
+    this.porcentajeMixElectrico=0;
+  }
+ 
+  if(this.porcentajePanelesFotovoltaicos==null){
+    this.porcentajePanelesFotovoltaicos=0;
+  }
      this.suma=+this.porcentajeMixElectrico + +this.porcentajeCombustible + +this.porcentajePanelesFotovoltaicos;
     
     console.log(this.suma);
@@ -198,6 +246,13 @@ export class UsageStageUpdateComponent implements OnInit {
     this.porcentajePanelesFotovoltaicos =
       Math.round((((cantidadPanelesFotovoltaicos * 100) / this.cantidad) * 100) / 100);
     
+    if(this.cantidadMixElectrico==null){
+    this.cantidadMixElectrico=0;
+  }
+  if(this.cantidadCombustible==null){
+    this.cantidadCombustible=0;
+  }
+
      this.suma=+this.cantidadMixElectrico + +this.cantidadCombustible + +this.cantidadPanelesFotovoltaicos;
     
     console.log(this.suma);
@@ -215,6 +270,13 @@ export class UsageStageUpdateComponent implements OnInit {
     this.cantidadPanelesFotovoltaicos =
       Math.round((((porcentajePanelesFotovoltaicos * this.cantidad) / 100) * 100) / 100);
    
+    if(this.porcentajeMixElectrico==null){
+    this.porcentajeMixElectrico=0;
+  }
+  if(this.porcentajeCombustible==null){
+   this.porcentajeCombustible=0;
+  }
+ 
      this.suma=+this.porcentajeMixElectrico + +this.porcentajeCombustible + +this.porcentajePanelesFotovoltaicos;
     
     console.log(this.suma);
