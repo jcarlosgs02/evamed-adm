@@ -200,7 +200,7 @@ export class MaterialStageUpdateComponent implements OnInit {
    
  for (var i = 0; i < array.length; i++) {
       this.IMGP[i] = new Image();
-        tis.IMGP[i].src = array[i];
+        this.IMGP[i].src = array[i];
       }
   }
   onGroupsChange(options: MatListOption[]) {
