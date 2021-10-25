@@ -123,25 +123,7 @@ export class UsageStageUpdateComponent implements OnInit {
   ngOnInit() {}
   
   
-  if(this.cantidadMixElectrico==null){
-    this.cantidadMixElectrico=0;
-  }
-  if(this.cantidadCombustible==null){
-    this.cantidadCombustible=0;
-  }
-  if(this.cantidadPanelesFotovoltaicos==null){
-    this.cantidadPanelesFotovoltaicos=0;
-  }
   
-  if(this.porcentajeMixElectrico==null){
-    this.porcentajeMixElectrico=0;
-  }
-  if(this.porcentajeCombustible==null){
-   this.porcentajeCombustible=0;
-  }
-  if(this.porcentajePanelesFotovoltaicos==null){
-    this.porcentajePanelesFotovoltaicos=0;
-  }
    
   
   changeCantidadME(cantidadMixElectrico) {
