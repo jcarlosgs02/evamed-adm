@@ -42,6 +42,7 @@ export class MaterialStageUpdateComponent implements OnInit {
   SOR = [];
   SOD = [];
   SOU = [];
+  IMGP = [];
   sectionRevit: boolean;
   sectionDynamo: boolean;
   selectedMaterial: boolean;
@@ -198,8 +199,8 @@ export class MaterialStageUpdateComponent implements OnInit {
   preload(array) {
    
  for (var i = 0; i < array.length; i++) {
-      let  images[i] = new Image();
-        images[i].src = array[i];
+      this.IMGP[i] = new Image();
+        tis.IMGP[i].src = array[i];
       }
   }
   onGroupsChange(options: MatListOption[]) {
