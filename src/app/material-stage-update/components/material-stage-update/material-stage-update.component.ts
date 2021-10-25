@@ -195,8 +195,12 @@ export class MaterialStageUpdateComponent implements OnInit {
     );
   }
 
-  preload(resources) {
-  resources.forEach(url => fetch(url,{mode:'no-cors'}).then(()=> console.log('imagen', url,'cargada')));
+  preload(array) {
+   
+ for (var i = 0; i < array.length; i++) {
+        images[i] = new Image();
+        images[i].src = array[i];
+      }
   }
   onGroupsChange(options: MatListOption[]) {
     options.map((option) => {
