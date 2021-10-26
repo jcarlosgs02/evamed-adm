@@ -570,13 +570,7 @@ export class HomeEvamedComponent implements OnInit {
         nameProject: this.nameProject,
       },
     });
-  changeUser(id) {
-    const dialogRef = this.dialog.open(ChangeUserComponent, {
-      width: '680px',
-      data: {
-        nameUsert: this.nameProject,
-      },
-    });
+  
     dialogRef.afterClosed().subscribe((result) => {
       this.projectsService.getProjectById(id).subscribe((data: any) => {
         this.projectsService
@@ -602,7 +596,40 @@ export class HomeEvamedComponent implements OnInit {
       });
     });
   }
-
+  
+  changeUser(id) {
+    const dialogRef = this.dialog.open(ChangeUserComponent, {
+      width: '680px',
+      data: {
+        nameUsert: this.nameProject,
+      },
+    });
+ dialogRef.afterClosed().subscribe((result) => {
+      this.projectsService.getProjectById(id).subscribe((data: any) => {
+        this.projectsService
+          .updateProyect(id, {
+            id,
+            name_project: result.nameProject,
+            builded_surface: data.builded_surface,
+            living_area: data.living_area,
+            tier: data.living_area,
+            distance: data.distance,
+            use_id: data.use_id,
+            type_id: data.type_id,
+            country_id: data.country_id,
+            useful_life_id: data.country_id,
+            housing_scheme_id: data.housing_scheme_id,
+            user_platform_id: data.user_platform_id,
+            city_id_origin: data.city_id_origin,
+          })
+          .subscribe((data2) => {
+            console.log(data2);
+            location.reload();
+          });
+      });
+    });
+  }
+  
   duplicateProject(projectId) {
     this.cargaDatosCalculo = false;
     this.projectsService
