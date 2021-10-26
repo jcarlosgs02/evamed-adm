@@ -602,7 +602,7 @@ export class HomeEvamedComponent implements OnInit {
     const dialogRef = this.dialog.open(ChangeUserComponent, {
       width: '680px',
       data: {
-        nameUsert: this.nameProject,
+       
       },
     });
  dialogRef.afterClosed().subscribe((result) => {
