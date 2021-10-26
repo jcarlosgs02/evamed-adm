@@ -9,6 +9,7 @@ import { Calculos } from '../../../calculos/calculos';
 import { CatalogsService } from './../../../core/services/catalogs/catalogs.service';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { ChangeNameProjectComponent } from '../change-name-project/change-name-project.component';
+import { ChangeUserComponent } from '../change-user/change-user.component';
 import { ConstructionStageService } from 'src/app/core/services/construction-stage/construction-stage.service';
 import { EndLifeService } from './../../../core/services/end-life/end-life.service';
 import { ElectricitConsumptionService } from './../../../core/services/electricity-consumption/electricit-consumption.service';
