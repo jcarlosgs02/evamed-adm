@@ -570,6 +570,13 @@ export class HomeEvamedComponent implements OnInit {
         nameProject: this.nameProject,
       },
     });
+     changeUser(id) {
+    const dialogRef = this.dialog.open(ChangeUserComponent, {
+      width: '680px',
+      data: {
+        nameUsert: this.nameProject,
+      },
+    });
     dialogRef.afterClosed().subscribe((result) => {
       this.projectsService.getProjectById(id).subscribe((data: any) => {
         this.projectsService
@@ -1006,7 +1013,9 @@ export class HomeEvamedComponent implements OnInit {
         noNiveles: this.noNiveles,
       },
     });
-
+    
+    
+      
     dialogRef.afterClosed().subscribe((result) => {
       try {
         this.projectsService
