@@ -570,7 +570,7 @@ export class HomeEvamedComponent implements OnInit {
         nameProject: this.nameProject,
       },
     });
-     changeUser(id) {
+  changeUser(id) {
     const dialogRef = this.dialog.open(ChangeUserComponent, {
       width: '680px',
       data: {
