@@ -119,6 +119,13 @@ export class ConstructionStageUpdateComponent implements OnInit {
       'Otros',
     ];
   }
+   preload(array) {
+   
+ for (var i = 0; i < array.length; i++) {
+      this.IMGP[i] = new Image();
+        this.IMGP[i].src = array[i];
+      }
+  }
 
   onGroupsChange(options: MatListOption[]) {
     let selectedSheet;
@@ -126,13 +133,7 @@ export class ConstructionStageUpdateComponent implements OnInit {
     options.map((option) => {
       selectedSheet = option.value;
     });
-     preload(array) {
-   
- for (var i = 0; i < array.length; i++) {
-      this.IMGP[i] = new Image();
-        this.IMGP[i].src = array[i];
-      }
-  }
+    
     // take index of selection
     this.indexSheet = this.sheetNames.indexOf(selectedSheet);
 
