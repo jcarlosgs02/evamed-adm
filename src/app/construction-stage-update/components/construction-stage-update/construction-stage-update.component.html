@@ -76,13 +76,13 @@
           </mat-expansion-panel-header>
           <!--Expansion panel form-field-->
           <div *ngFor="let data of dataArrayEC; let i=index;">
-            <div class="Col col-small-space">
+            <div class="Col col-big-space">
                 <label class="label-small-input">
                   Fuente
                 </label>
                 <mat-form-field appearance="outline">
                   <mat-label>Seleccione una opción</mat-label>
-                  <mat-select [(ngModel)]="data.fuente" name="fuente{{i}}" style="width:94%">
+                  <mat-select [(ngModel)]="data.fuente" name="fuente{{i}}">
                     <mat-option *ngFor="let fuente of catalogoFuentes" [value]="fuente.id">
                       {{fuente.name_source_information}}
                     </mat-option>
@@ -136,7 +136,7 @@
         </mat-expansion-panel>
 
         <!--Expansion panel 2. -->
-        <mat-expansion-panel *ngIf="indexSheet!==undefined">
+        <mat-expansion-panel *ngIf="indexSheet!==undefined" style="background:gray;">
           <!--Expansion panel header-->
           <mat-expansion-panel-header class="custom-expansion-panel-header">
             <mat-panel-title class="custom-mat-panel-title">
@@ -200,7 +200,7 @@
         </mat-expansion-panel>
 
         <!--Expansion panel 3. -->
-        <mat-expansion-panel *ngIf="indexSheet!==undefined">
+        <mat-expansion-panel *ngIf="indexSheet!==undefined" style="background:gray;">
           <!--Expansion panel header-->
           <mat-expansion-panel-header class="custom-expansion-panel-header">
             <mat-panel-title class="custom-mat-panel-title">
