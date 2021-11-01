@@ -82,7 +82,7 @@
                 </label>
                 <mat-form-field appearance="outline">
                   <mat-label>Seleccione una opción</mat-label>
-                  <mat-select [(ngModel)]="data.fuente" name="fuente{{i}}">
+                  <mat-select [(ngModel)]="data.fuente" name="fuente{{i}}" style="width:94%">
                     <mat-option *ngFor="let fuente of catalogoFuentes" [value]="fuente.id">
                       {{fuente.name_source_information}}
                     </mat-option>
