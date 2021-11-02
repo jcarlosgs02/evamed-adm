@@ -40,6 +40,11 @@ export class AuthService {
      return this.af.auth.sendPasswordResetEmail(email);
   }
   
+  // Verificar correo
+  verifyEmail(): Promise<void> {
+     return this.afAuth.auth.currentUser.sendEmailVerification();
+   }
+  
   hasUser() {
     return this.af.authState;
   }
