@@ -34,7 +34,12 @@ export class AuthService {
   logout() {
     return this.af.auth.signOut();
   }
-
+  
+  // Recuperar contraseña
+  resetPassword(email): Promise<void> {
+     return this.af.auth.sendPasswordResetEmail(email);
+  }
+  
   hasUser() {
     return this.af.authState;
   }
