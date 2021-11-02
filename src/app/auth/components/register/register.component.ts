@@ -41,6 +41,7 @@ export class RegisterComponent implements OnInit {
       if ( value.password === value.password2 ) {
         this.user.addUser(value).subscribe(data => {});
         this.authService.createUser(value.email, value.password).then(() => {
+          this.authService.verifyEmail();
           alert("Registro correcto");
           this.router.navigate(['/auth/login']);
           
