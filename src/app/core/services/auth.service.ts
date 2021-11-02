@@ -42,7 +42,7 @@ export class AuthService {
   
   // Verificar correo
   verifyEmail(): Promise<void> {
-     return this.afAuth.auth.currentUser.sendEmailVerification();
+     return this.af.auth.currentUser.sendEmailVerification();
    }
   
   hasUser() {
