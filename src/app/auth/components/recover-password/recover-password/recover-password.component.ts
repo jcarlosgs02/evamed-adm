@@ -37,12 +37,12 @@ export class RecoverPasswordComponent implements OnInit {
   }
 
   recovery(event: Event) {
-   
+    event.preventDefault()
     if (this.form.valid) {
       const value = this.form.value;
       this.authService.resetPassword(value.email)
       .then( () => {
-        
+        alert('El correo para restablecer la contraseña se ha enviado corectamente');
         this.router.navigate(['/']);
       })
       .catch( () => {
