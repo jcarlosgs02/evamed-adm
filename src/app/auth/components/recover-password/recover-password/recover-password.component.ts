@@ -49,4 +49,7 @@ export class RecoverPasswordComponent implements OnInit {
         alert('Error! Intenta nuevamente la solicitud');
       });
      }
-    }
+   }
+  
+  
+}
