@@ -1,304 +1,415 @@
-<div class="principal-container">
-  <div class="content-container">
-    <div class="content-header-container">
-      <div class="title-standard-second">
-        Tus proyectos
-      </div>
-      <div class="filter-options">
-        <mat-form-field appearance="outline" class="select-general">
-          <mat-label>Seleccione una opción</mat-label>
-          <mat-select  [(ngModel)]="filtroUsoSeleccionado" (selectionChange)="selectUse(filtroUsoSeleccionado)">
-            <mat-option Selected>
-              Todos
-            </mat-option>
-            <mat-option *ngFor="let uso of filtroCatalogoUsos" [value]="uso.id">
-              {{uso.name_use}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="container-principal" *ngIf="countProjectList === 0">
-      <div class="btn-primer-producto" (click)="openDialogANP()">
-        <div class="plus">+</div>
-        <div class="message-plus">Crea tu primer proyecto</div>
-      </div>
-    </div>
-    <mat-card *ngFor="let project of projectsList; let i = index" class="card-project">
-      <div class="header-tag">
-        <div class="more-vert">
-          <button
-            mat-icon-button
-            [matMenuTriggerFor]="menu"
-            aria-label="Example icon-button with a menu"
-          >
-            <mat-icon class="more-vert-custom">more_vert</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu" class="custom-menu">
-            <button mat-menu-item (click)="duplicateProject(project.id)" class="custom-item">
-              <span>Duplicar</span>
-            </button>
-            <button mat-menu-item (click)="renameProject(project.id)" class="custom-item">
-              <span>Renombrar</span>
-            </button>
-            <button mat-menu-item (click)="deleteProject(project.id)" class="custom-item">
-              <span>Eliminar</span>
-            </button>
-          </mat-menu>
-        </div>
-        <div class="container-tag">
-          <div class="title-tag">
-            {{project.name_project}}
-          </div>
-          <div class="date-tag">
-            <ng-template [ngIf]="project.use_id==1"><div>Habitacional</div></ng-template>
-            <ng-template [ngIf]="project.use_id==2"><div>Comercial</div></ng-template>
-            <ng-template [ngIf]="project.use_id==3"><div>Oficinas</div></ng-template>
-            <ng-template [ngIf]="project.use_id==4"><div>Industrial</div></ng-template>
-            <ng-template [ngIf]="project.use_id==5"><div>Educacional</div></ng-template>
-            <ng-template [ngIf]="project.use_id==6"><div>Hospitalario</div></ng-template>
-          </div>
-        </div>
-      </div>
-      <mat-tab-group class="container-principal-tab">
-        <mat-tab label="Configurar información" class="label-principal-tab">
-          <div class="second-mat-tab-group">
-            <mat-tab-group class="container-second-tab">
-              <mat-tab label="Producción" class="label-second-tab">
-                <section class="grid-container"  >
-                  <mat-card
-                    class="card-item-custom"
-                    *ngFor="let section of serchSections(project.id)"
-                    (click)="updateMaterial(project.id)"
-                    >
-                    <h2>{{section.name_section}}</h2>
-                    <ul class="listItems">
-                      <li *ngFor="let sc of serchSC(project.id, section.id)">{{sc}}</li>
-                    </ul>
-                  </mat-card>
-                </section>
-              </mat-tab>
-              <mat-tab label="Construcción" class="label-second-tab">
-                <section class="grid-container">
-                  <mat-card
-                    class="card-item-custom"
-                    *ngFor="let section of serchConstructiveSection(project.id)"
-                    (click)="updateConstruction(project.id)"
-                  >
-                    <h2>{{section.name_section}}</h2>
-                    <ul class="listItems">
-                      <li *ngFor="let sc of serchDetailConstruction(project.id, section.id)">
-                        {{sc.source_information}} <br />
-                        {{sc.quantity}} hrs
-                      </li>
-                    </ul>
-                  </mat-card>
-                </section>
-              </mat-tab>
-              <mat-tab label="Uso" class="label-second-tab">
-                <section class="grid-container">
-                  <div class="subseccion">
-                    <div>
-                      <canvas baseChart
-                      [datasets]="auxDatosGraficaUso[i]"
-                      [options]="pieChartOptions_elementos"
-                      [chartType]="pieChartType">
-                    </canvas>
-                  </div>
-                  <div>
-                      <h2>Consumo energético total <br>requerido anualmente</h2>
-                      <div *ngFor="let data of serchUseData(project.id)">
-                        <div *ngIf="data.source === 'electric'">
-                          <span class="dot" [ngStyle]="{'background-color': '#767676'}"></span>Mix eléctrico {{data.quantity}} Kwh</div>
-                        <div *ngIf="data.source === 'fuel'">
-                          <span class="dot" [ngStyle]="{'background-color': '#DFDFDF'}"></span>Combustible: {{data.quantity}} Kwh</div>
-                        <div *ngIf="data.source === 'panels'">
-                          <span class="dot" [ngStyle]="{'background-color': '#C3C3C3'}"></span>Combustible: {{data.quantity}} Kwh</div>
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-warning card-header-icon">
+                      <div class="card-icon">
+                          <i class="material-icons">content_copy</i>
                       </div>
-                      <button
-                          mat-button
-                          class="yellow-button-mini"
-                          (click)="updateUso(project.id)"
-                        >
-                          Editar
-                        </button>
-                    </div>
+                      <p class="card-category">Used Space</p>
+                      <h3 class="card-title">49/50
+                          <small>GB</small>
+                      </h3>
                   </div>
-                </section>
-              </mat-tab>
-              <mat-tab label="Fin de vida" class="label-second-tab">
-                <section class="grid-container">
-                  <mat-card
-                    class="card-item-custom"
-                    *ngFor="let section of serchEndLifeSection(project.id)"
-                    (click)="updateEndLife(project.id)"
-                  >
-                    <h2>{{section.name_section}}</h2>
-                  </mat-card>
-                </section>
-              </mat-tab>
-            </mat-tab-group>
-          </div>
-        </mat-tab>
-        <mat-tab label="Resultados" class="label-principal-tab">
-          <div class="mat-tab-resultados" *ngIf="cargaDatosCalculo">
-            <div>
-              <div class="seccionUno">
-                <p>Selecciona impacto ambiental</p>
-                <mat-select class="select-impacto-ambiental" [(ngModel)]="auxDataProjectList[i].impactoCompleteSelect" (selectionChange)="selectImpactoAmbiental(auxDataProjectList[i].impactoCompleteSelect,i)" required>
-                  <mat-option *ngFor="let impacto of catologoImpactoAmbiental" [value]="impacto.name_complete_potential_type">
-                    {{impacto.name_complete_potential_type}}
-                  </mat-option>
-                </mat-select>
-                <p>Fases de ciclo de vida</p>
-                <ul>
-                   <li> <button id="{{auxDataProjectList[i].idsBotones['Producción']}}" (click)="selectEtapa('Producción',i,auxDataProjectList[i].id)" mat-stroked-button class="button-info">
-                      <div class="some-text">
-                      <a id="{{auxDataProjectList[i].idsTextBotones['Producción']}}">Producción</a>
-                      <a> {{auxDataProjectList[i].porcentaje[auxDataProjectList[i].impactoSelect]['Producción']['porcentaje']}}%
-                         / {{auxDataProjectList[i].porcentaje[auxDataProjectList[i].impactoSelect]['Producción']['num']}}
-                          {{auxDataProjectList[i].unit_impacto}}</a></div>
-                      </button>
-                      <button class='button-icon' (click)="eliminarEtapa('Producción',i)">
-                        <mat-icon class="uno">{{auxDataProjectList[i].iconosCambio['Producción']}}</mat-icon>
-                      </button>
-                   </li>
-                   <li> <button id="{{auxDataProjectList[i].idsBotones['Construccion']}}" (click)="selectEtapa('Construccion',i,auxDataProjectList[i].id)" mat-stroked-button class="button-info">
-                      <div class="some-text">
-                      <a id="{{auxDataProjectList[i].idsTextBotones['Construccion']}}">Construcción</a>
-                      <a> {{auxDataProjectList[i].porcentaje[auxDataProjectList[i].impactoSelect]['Construccion']['porcentaje']}}%
-                        / {{auxDataProjectList[i].porcentaje[auxDataProjectList[i].impactoSelect]['Construccion']['num']}}
-                        {{auxDataProjectList[i].unit_impacto}}</a></div>
-                      </button>
-                      <button class='button-icon' (click)="eliminarEtapa('Construccion',i)">
-                        <mat-icon class="dos">{{auxDataProjectList[i].iconosCambio['Construccion']}}</mat-icon>
-                      </button>
-                    </li>
-                   <li> <button id="{{auxDataProjectList[i].idsBotones['Uso']}}" (click)="selectEtapa('Uso',i,auxDataProjectList[i].id)" mat-stroked-button class="button-info">
-                      <div class="some-text">
-                      <a id="{{auxDataProjectList[i].idsTextBotones['Uso']}}">Uso</a>
-                      <a> {{auxDataProjectList[i].porcentaje[auxDataProjectList[i].impactoSelect]['Uso']['porcentaje']}}%
-                        / {{auxDataProjectList[i].porcentaje[auxDataProjectList[i].impactoSelect]['Uso']['num']}}
-                        {{auxDataProjectList[i].unit_impacto}}</a></div>
-                      </button>
-                      <button class='button-icon' (click)="eliminarEtapa('Uso',i)">
-                        <mat-icon class="tres">{{auxDataProjectList[i].iconosCambio['Uso']}}</mat-icon>
-                      </button>
-                    </li>
-                   <li> <button id="{{auxDataProjectList[i].idsBotones['FinDeVida']}}" (click)="selectEtapa('FinDeVida',i,auxDataProjectList[i].id)" mat-stroked-button class="button-info">
-                      <div class="some-text">
-                      <a id="{{auxDataProjectList[i].idsTextBotones['FinDeVida']}}">Fin de vida</a>
-                      <a> {{auxDataProjectList[i].porcentaje[auxDataProjectList[i].impactoSelect]['FinDeVida']['porcentaje']}}%
-                        / {{auxDataProjectList[i].porcentaje[auxDataProjectList[i].impactoSelect]['FinDeVida']['num']}}
-                        {{auxDataProjectList[i].unit_impacto}}</a></div>
-                      </button>
-                      <button class='button-icon' (click)="eliminarEtapa('FinDeVida',i)">
-                        <mat-icon class="cuatro">{{auxDataProjectList[i].iconosCambio['FinDeVida']}}</mat-icon>
-                      </button>
-                    </li>
-                </ul>
-              </div>
-              <button mat-stroked-button class="Detalle ver"
-              (click)="redirectResultados(project.id)"
-              >Ver detalle</button>
-            </div>
-            <div>
-              <div class="button-graph">
-                <mat-button-toggle-group>
-                     <mat-button-toggle (click)="cambioGrafica(i,'Pie')"><mat-icon>pie_chart</mat-icon></mat-button-toggle>
-                     <mat-button-toggle (click)="cambioGrafica(i,'Bar')"><mat-icon>bar_chart</mat-icon></mat-button-toggle>
-                   </mat-button-toggle-group>
-                <button>Exportar</button>
-              </div>
-              <div *ngIf="auxDataProjectList[i].TipoGraficaActiva['Pie']">
-                <div class="canvas-container seccionTres">
-                  <canvas #MyChart='base-chart' #canvas baseChart
-                              [datasets]="auxDataProjectList[i].dataGraficaPie"
-                              [chartType]="doughnutChartType"
-                              [options]="pieChartOptions"
-                              width="217px" height="292px">
-                  </canvas>
-                </div>
-              </div>
-              <div *ngIf="auxDataProjectList[i].TipoGraficaActiva['Bar']">
-                <div class="canvas-container seccionTres">
-                  <canvas #MyChart='base-chart' #canvas baseChart
-                      [datasets]="auxDataProjectList[i].dataGraficaBar['datos']"
-                      [labels]="auxDataProjectList[i].dataGraficaBar['labels']"
-                      [options]="barChartOptions"
-                      [legend]="barChartLegend"
-                      [plugins]="barChartPlugins"
-                      [chartType]="barChartType"
-                       height="305px">
-                    </canvas>
-                </div>
-              </div>
-
-            </div>
-            <div>
-              <button mat-stroked-button class="Detalle reporte">Generar reporte</button>
-              <p>Dispersión de impactos por subetapa</p>
-              <ul class="mostrar-subetapas">
-                <li *ngFor = "let subetapa of auxDataProjectList[i].subetasMostrada">
-                  <span class="dot" [ngStyle]="{'background-color': subetapa.color}"></span>
-                  <div class="text-subetapas" *ngIf = "auxDataProjectList[i].banderaEtapa">
-                    <a>{{subetapa.abreviacion}} - {{subetapa.nombre_subeatapa}}</a>
-                    <a>{{auxDataProjectList[i].porcentajeSubepata[auxDataProjectList[i].impactoSelect][auxDataProjectList[i].etapaSeleccionada][subetapa.abreviacion]['porcentaje']}}% /
-                      {{auxDataProjectList[i].porcentajeSubepata[auxDataProjectList[i].impactoSelect][auxDataProjectList[i].etapaSeleccionada][subetapa.abreviacion]['num']}}
-                      {{auxDataProjectList[i].unit_impacto}}</a>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons text-danger">warning</i>
+                          <a href="javascript:void(0)">Get More Space...</a>
+                      </div>
                   </div>
-                </li>
-              </ul>
-            </div>
+              </div>
           </div>
-        </mat-tab>
-      </mat-tab-group>
-    </mat-card>
-  </div>
-  <div class="description-container">
-    <mat-card class="user-card">
-      <mat-card-header class="image-container">
-        <div mat-card-avatar class="profile-image"></div>
-      </mat-card-header>
-      <mat-card-content class="content-standard-card">
-        <strong class="label-name">{{user}}</strong>
-        <p class="label-profile">
-          {{sector}}
-        </p>
-        <mat-card-actions>
-        <button
-          mat-button
-          class="blue-button"
-          (click)="changeUser(user)" 
-        >
-        Editar
-      </button>
-      </mat-card-actions>
-      </mat-card-content>
-      <mat-card-content class="content-estadisticas">
-        <div>
-          <div>{{countProjectList}}</div>
-          <div>Proyectos</div>
-        </div>
-      </mat-card-content>
-      <mat-card-actions>
-        <button
-          mat-button
-          class="green-button"
-          (click)="openDialogANP()"
-        >
-        Crear nuevo proyecto
-      </button>
-      </mat-card-actions>
-      <mat-card-actions class="content-logout-button">
-        <button
-          mat-button
-          class="melon-button"
-          (click)="logout()"
-        >
-          Cerrar sesión
-        </button>
-      </mat-card-actions>
-    </mat-card>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-success card-header-icon">
+                      <div class="card-icon">
+                          <i class="material-icons">store</i>
+                      </div>
+                      <p class="card-category">Revenue</p>
+                      <h3 class="card-title">$34,245</h3>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons">date_range</i> Last 24 Hours
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-danger card-header-icon">
+                      <div class="card-icon">
+                          <i class="material-icons">info_outline</i>
+                      </div>
+                      <p class="card-category">Fixed Issues</p>
+                      <h3 class="card-title">75</h3>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons">local_offer</i> Tracked from Github
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-info card-header-icon">
+                      <div class="card-icon">
+                          <i class="fa fa-twitter"></i>
+                      </div>
+                      <p class="card-category">Followers</p>
+                      <h3 class="card-title">+245</h3>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons">update</i> Just Updated
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-4">
+              <div class="card card-chart">
+                  <div class="card-header card-header-success">
+                      <div class="ct-chart" id="dailySalesChart"></div>
+                  </div>
+                  <div class="card-body">
+                      <h4 class="card-title">Daily Sales</h4>
+                      <p class="card-category">
+                          <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons">access_time</i> updated 4 minutes ago
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card card-chart">
+                  <div class="card-header card-header-warning">
+                      <div class="ct-chart" id="websiteViewsChart"></div>
+                  </div>
+                  <div class="card-body">
+                      <h4 class="card-title">Email Subscriptions</h4>
+                      <p class="card-category">Last Campaign Performance</p>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons">access_time</i> campaign sent 2 days ago
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card card-chart">
+                  <div class="card-header card-header-danger">
+                      <div class="ct-chart" id="completedTasksChart"></div>
+                  </div>
+                  <div class="card-body">
+                      <h4 class="card-title">Completed Tasks</h4>
+                      <p class="card-category">Last Campaign Performance</p>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons">access_time</i> campaign sent 2 days ago
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-lg-6 col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-tabs card-header-primary">
+                      <div class="nav-tabs-navigation">
+                          <div class="nav-tabs-wrapper">
+                              <span class="nav-tabs-title">Tasks:</span>
+                              <ul class="nav nav-tabs" data-tabs="tabs">
+                                  <li class="nav-item">
+                                      <a mat-button class="nav-link active" href="#profile" data-toggle="tab">
+                                          <i class="material-icons">bug_report</i> Bugs
+                                          <div class="ripple-container"></div>
+                                      </a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a mat-button class="nav-link" href="#messages" data-toggle="tab">
+                                          <i class="material-icons">code</i> Website
+                                          <div class="ripple-container"></div>
+                                      </a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a mat-button class="nav-link" href="#settings" data-toggle="tab">
+                                          <i class="material-icons">cloud</i> Server
+                                          <div class="ripple-container"></div>
+                                      </a>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-body">
+                      <div class="tab-content">
+                          <div class="tab-pane active" id="profile">
+                              <table class="table">
+                                  <tbody>
+                                      <tr>
+                                          <td>
+                                              <div class="form-check">
+                                                  <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="" checked>
+                                                      <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                  </label>
+                                              </div>
+                                          </td>
+                                          <td>Sign contract for "What are conference organizers afraid of?"</td>
+                                          <td class="td-actions text-right">
+                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <div class="form-check">
+                                                  <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="">
+                                                      <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                  </label>
+                                              </div>
+                                          </td>
+                                          <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                                          <td class="td-actions text-right">
+                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <div class="form-check">
+                                                  <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="">
+                                                      <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                  </label>
+                                              </div>
+                                          </td>
+                                          <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                                          </td>
+                                          <td class="td-actions text-right">
+                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <div class="form-check">
+                                                  <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="" checked>
+                                                      <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                  </label>
+                                              </div>
+                                          </td>
+                                          <td>Create 4 Invisible User Experiences you Never Knew About</td>
+                                          <td class="td-actions text-right">
+                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                          <div class="tab-pane" id="messages">
+                              <table class="table">
+                                  <tbody>
+                                      <tr>
+                                          <td>
+                                              <div class="form-check">
+                                                  <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="" checked>
+                                                      <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                  </label>
+                                              </div>
+                                          </td>
+                                          <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                                          </td>
+                                          <td class="td-actions text-right">
+                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <div class="form-check">
+                                                  <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="">
+                                                      <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                  </label>
+                                              </div>
+                                          </td>
+                                          <td>Sign contract for "What are conference organizers afraid of?"</td>
+                                          <td class="td-actions text-right">
+                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                          <div class="tab-pane" id="settings">
+                              <table class="table">
+                                  <tbody>
+                                      <tr>
+                                          <td>
+                                              <div class="form-check">
+                                                  <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="">
+                                                      <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                  </label>
+                                              </div>
+                                          </td>
+                                          <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                                          <td class="td-actions text-right">
+                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <div class="form-check">
+                                                  <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="" checked>
+                                                      <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                  </label>
+                                              </div>
+                                          </td>
+                                          <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                                          </td>
+                                          <td class="td-actions text-right">
+                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <div class="form-check">
+                                                  <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="" checked>
+                                                      <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                  </label>
+                                              </div>
+                                          </td>
+                                          <td>Sign contract for "What are conference organizers afraid of?"</td>
+                                          <td class="td-actions text-right">
+                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-warning">
+                      <h4 class="card-title">Employees Stats</h4>
+                      <p class="card-category">New employees on 15th September, 2016</p>
+                  </div>
+                  <div class="card-body table-responsive">
+                      <table class="table table-hover">
+                          <thead class="text-warning">
+                              <th>ID</th>
+                              <th>Name</th>
+                              <th>Salary</th>
+                              <th>Country</th>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>1</td>
+                                  <td>Dakota Rice</td>
+                                  <td>$36,738</td>
+                                  <td>Niger</td>
+                              </tr>
+                              <tr>
+                                  <td>2</td>
+                                  <td>Minerva Hooper</td>
+                                  <td>$23,789</td>
+                                  <td>Curaçao</td>
+                              </tr>
+                              <tr>
+                                  <td>3</td>
+                                  <td>Sage Rodriguez</td>
+                                  <td>$56,142</td>
+                                  <td>Netherlands</td>
+                              </tr>
+                              <tr>
+                                  <td>4</td>
+                                  <td>Philip Chaney</td>
+                                  <td>$38,735</td>
+                                  <td>Korea, South</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
 </div>
